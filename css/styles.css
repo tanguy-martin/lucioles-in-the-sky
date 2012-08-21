@@ -1,0 +1,55 @@
+html, body {
+	height: 100%;
+	background: #111 url(../images/stars.png);
+	animation: change-bg 6s alternate infinite;
+	color: #fefefe;
+	font-family: georgia, "Cambria", times, sans;
+}
+
+p {
+	opacity: 0.5;
+}
+
+.enigma {
+	width: 5px;
+	height: 5px;
+	color: #fff;
+	font-size: 50px;
+	font-weight: bold;
+	position: fixed;
+	top: 0;
+	border: 1px solid #0ead13;
+	border-radius: 50%;
+	box-shadow: 0 0 80px #eb1c2a;
+	animation: bump 2s alternate infinite,
+			   appear 2s alternate forwards,
+			   bubbly 5s 3s alternate infinite;
+
+	transition: all 2s ease-in;
+}
+
+@keyframes bump {
+  0% { box-shadow: 0 0 80px #2a4d1c; }
+  50% { box-shadow: 0 0 180px #569F39; }
+  100% { box-shadow: 0 0 80px #2a4d1c; }
+}
+
+@keyframes appear {
+  0% { transform: scale(0,0); }
+  100% { transform: scale(100%, 100%); }
+}
+
+@keyframes bubbly {
+  0% { transform: scale(100%, 100%); }
+  100% { transform: scale(50%, 50%); }
+}
+
+@keyframes move {
+  0% { }
+  100% { }
+}
+
+@keyframes change-bg {
+  0% { background-color: #111; }
+  100% { background-color: #090845; }
+}
