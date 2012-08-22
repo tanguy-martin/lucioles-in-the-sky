@@ -41,8 +41,8 @@
 		pos = getPos();
 		
 		frag = document.createElement('div');
-		frag.className = "enigma";
-		frag.id = "enigma" + i;
+		frag.className = "firefly";
+		frag.id = "firefly" + i;
 		frag.style.backgroundColor = 'hsl(' + Math.ceil((Math.random()*360)) + ', 100%, 50%)';
 		frag.style.top = pos.top;
 		frag.style.left = pos.left;
@@ -72,7 +72,7 @@
 
 		}());
 
-	$('body').on('webkitAnimationIteration mozAnimationEnd msAnimationEnd oAnimationEnd animationiteration', '.enigma', function(e) {
+	$('body').on('webkitAnimationIteration mozAnimationEnd msAnimationEnd oAnimationEnd animationiteration', '.firefly', function(e) {
 		// move at each iteration
 		var newPos = getPos('mouse');
 		_$(this).css({
