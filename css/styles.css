@@ -9,7 +9,9 @@ html, body {
 p {
 	opacity: 0.5;
 }
-
+a {
+	color: #0CF;
+}
 .firefly {
 	width: 5px;
 	height: 5px;
@@ -18,38 +20,26 @@ p {
 	font-weight: bold;
 	position: fixed;
 	top: 0;
-	border: 1px solid #0ead13;
 	border-radius: 50%;
 	box-shadow: 0 0 80px #eb1c2a;
-	animation: bump 2s alternate infinite,
-			   appear 2s alternate forwards,
-			   bubbly 5s 3s alternate infinite;
+	animation:  bump 2s alternate infinite,
+				appear 2s alternate forwards;
 
 	transition: all 2s ease-in;
 }
 
 @keyframes bump {
-  0% { box-shadow: 0 0 80px #2a4d1c; }
-  50% { box-shadow: 0 0 180px #569F39; }
-  100% { box-shadow: 0 0 80px #2a4d1c; }
+ 	0% { box-shadow: 0 0 80px #2a4d1c; }
+  	50% { box-shadow: 0 0 180px #569F39; }
+  	100% { box-shadow: 0 0 80px #2a4d1c; }
 }
 
 @keyframes appear {
-  0% { transform: scale(0,0); }
-  100% { transform: scale(100%, 100%); }
-}
-
-@keyframes bubbly {
-  0% { transform: scale(100%, 100%); }
-  100% { transform: scale(50%, 50%); }
-}
-
-@keyframes move {
-  0% { }
-  100% { }
+  	0% { transform: scale(0,0); }
+  	100% { transform: scale(100%, 100%); }
 }
 
 @keyframes change-bg {
-  0% { background-color: #111; }
-  100% { background-color: #090845; }
+  	0% { background-color: #111; }
+  	100% { background-color: #090845; }
 }

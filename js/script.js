@@ -34,63 +34,58 @@
 		},
 		pos,
 		creationInterval = 100,
-		maxElements = 30;
+		maxElements = 20,
 
 	// create new element every at a specified interval
-	var intervalId = setInterval(function () {
-		pos = getPos();
-		
-		frag = document.createElement('div');
-		frag.className = "firefly";
-		frag.id = "firefly" + i;
-		frag.style.backgroundColor = 'hsl(' + Math.ceil((Math.random()*360)) + ', 100%, 50%)';
-		frag.style.top = pos.top;
-		frag.style.left = pos.left;
-		document.body.appendChild(frag);
-		i++;
+		intervalId = setInterval(
+			function () {
+				pos = getPos();
+				
+				frag = document.createElement('div');
+				frag.className = "firefly";
+				frag.id = "firefly" + i;
+				frag.style.backgroundColor = 'hsl(' + Math.ceil((Math.random()*360)) + ', 100%, 50%)';
+				frag.style.top = pos.top;
+				frag.style.left = pos.left;
+				document.body.appendChild(frag);
+				i++;
 
-		if (i == maxElements) {
-			clearInterval(intervalId);
-		}
-		
-	}, creationInterval),
-		/**
-		 * Just a simple jQuery cache, 
-		 * the cache id is the id attribute of the DOM element
-		 *
-		**/
-		_$ = (function () {
-
-			var arr = {};
-
-			return function (el) {
-				if (!arr[el.id]) {
-					arr[el.id] = $(el);
+				// stop once we added a certain number of fireflies
+				if (i == maxElements) {
+					clearInterval(intervalId);
 				}
-				return arr[el.id];
-			};
-
-		}());
+				
+			}, 
+			creationInterval
+		);
 
 	$('body').on('webkitAnimationIteration mozAnimationEnd msAnimationEnd oAnimationEnd animationiteration', '.firefly', function(e) {
+		if (!e.originalEvent || e.originalEvent.animationName != 'bump' ) {
+			return;
+		}
+
 		// move at each iteration
-		var newPos = getPos('mouse');
-		_$(this).css({
-			left: newPos.left,
-			top: newPos.top,
-			backgroundColor: 'hsl(' + Math.ceil((Math.random()*360)) + ', 100%, 50%)'
-		});
+		var newPos = getPos('mouse'),
+			newHue = Math.ceil((Math.random()*360)),
+			newStyle = this.style;   
+
+		newStyle.left = newPos.left;
+		newStyle.top = newPos.top;
+		newStyle.backgroundColor = 'hsl(' + newHue + ', 100%, 50%)';
+		newStyle.boxShadow = 'hsl(' + newHue + ', 100%, 50%) 0 0 80px';
+
+		this.style = newStyle;
 	});
-	$(document).on('mousemove', function(e) {
-	    mousePos.left = e.pageX;
-	    mousePos.top = e.pageY;
+
+	$(document).on('mousemove mouseleave', function(e) {
+		mousePos.left = e.pageX;
+		mousePos.top = e.pageY;
 	}); 
-	(function(window) {
-		// adjust maxWidth and maxHeight on resize
-		$(window).on('resize', function() {
-			maxHeight = window.innerHeight;
-			maxWidth = window.innerWidth;
-		});
-	}(window));	
+
+	// adjust maxWidth and maxHeight on resize
+	$(window).on('resize', function() {
+		maxHeight = window.innerHeight;
+		maxWidth = window.innerWidth;
+	});
 
 }());
