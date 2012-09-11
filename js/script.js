@@ -36,7 +36,7 @@
 		creationInterval = 100,
 		maxElements = 20,
 
-	// create new element every at a specified interval
+		// create new element every at a specified interval
 		intervalId = setInterval(
 			function () {
 				pos = getPos();
