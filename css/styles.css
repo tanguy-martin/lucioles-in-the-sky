@@ -3,7 +3,7 @@ html, body {
 	background: #111 url(../images/stars.png);
 	animation: change-bg 6s alternate infinite;
 	color: #fefefe;
-	font-family: georgia, "Cambria", times, sans;
+	font-family: verdana, helvetica, arial, sans;
 }
 
 p {
@@ -11,6 +11,7 @@ p {
 }
 a {
 	color: #0CF;
+	animation:  bump 5s alternate infinite;
 }
 .firefly {
 	width: 4px;

@@ -33,10 +33,10 @@
 			}
 		},
 		pos,
-		creationInterval = 100,
+		creationInterval = 400,
 		maxElements = 20,
 
-		// create new element every at a specified interval
+		// create new fireflies at a specified interval
 		intervalId = setInterval(
 			function () {
 				pos = getPos();
