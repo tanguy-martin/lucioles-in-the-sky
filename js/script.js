@@ -59,7 +59,7 @@
 			creationInterval
 		);
 
-	$('body').on('webkitAnimationIteration mozAnimationEnd msAnimationEnd oAnimationEnd animationiteration', '.firefly', function(e) {
+	$('body').on('webkitAnimationIteration mozAnimationIteration msAnimationEnd oAnimationEnd animationiteration', '.firefly', function(e) {
 		if (!e.originalEvent || e.originalEvent.animationName != 'bump' ) {
 			return;
 		}
@@ -67,8 +67,8 @@
 		// move at each iteration
 		var newPos = getPos('mouse'),
 			newHue = Math.ceil((Math.random()*360)),
-			newStyle = this.style;   
-
+			newStyle = this.style;
+			
 		newStyle.left = newPos.left;
 		newStyle.top = newPos.top;
 		newStyle.backgroundColor = 'hsl(' + newHue + ', 100%, 50%)';
